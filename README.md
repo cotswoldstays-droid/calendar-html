@@ -9,8 +9,8 @@
     body { font-family: Arial, sans-serif; margin: 20px; }
     .fc-booked { background-color: #ff9999 !important; }       /* red for booked */
     .fc-available { background-color: #b3ffb3 !important; }   /* green for available */
-    .fc-changeover {
-      background: linear-gradient(to bottom, #ff9999 50%, #b3ffb3 50%) !important;
+    .fc-changeover { 
+      background: linear-gradient(to bottom, #ff9999 50%, #b3ffb3 50%) !important; 
     }
   </style>
 </head>
@@ -23,7 +23,7 @@
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         events: function(fetchInfo, successCallback, failureCallback) {
-          Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vRPwBmfzZ0LW5R2l9w5WUWrhIycY1i_cutGW01j57ecPSbvTr6vmBWB_Wdxdocv3T1sNnmCLi6HULjI/pub?gid=0&single=true&output=csv", {
+          Papa.parse("https://docs.google.com/spreadsheets/d/1-5RW-4Ftq8CDpafktiFZG1s2yC_Ymxm9j4Nducjda10/edit?usp=drivesdk", {
             download: true,
             header: true,
             complete: function(results) {
@@ -32,7 +32,7 @@
                 if (row.Status === 'Booked') cssClass = 'fc-booked';
                 else if (row.Status === 'Available') cssClass = 'fc-available';
                 else if (row.Status === 'Changeover') cssClass = 'fc-changeover';
-
+                
                 return {
                   title: row.Status + (row.Price ? " – " + row.Price : ""),
                   start: row.Date,
